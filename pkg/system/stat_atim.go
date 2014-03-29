@@ -1,8 +1,8 @@
+// +build linux dragonfly openbsd solaris
+
 package system
 
-import (
-	"syscall"
-)
+import "syscall"
 
 func GetLastAccess(stat *syscall.Stat_t) syscall.Timespec {
 	return stat.Atim
