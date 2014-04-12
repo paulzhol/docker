@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/dotcloud/docker/runtime/graphdriver"
 	"os"
-	"os/exec"
 	"path"
 )
 
@@ -32,13 +31,6 @@ func (d *Driver) Status() [][2]string {
 }
 
 func (d *Driver) Cleanup() error {
-	return nil
-}
-
-func copyDir(src, dst string) error {
-	if output, err := exec.Command("cp", "-aT", "--reflink=auto", src, dst).CombinedOutput(); err != nil {
-		return fmt.Errorf("Error VFS copying directory: %s (%s)", err, output)
-	}
 	return nil
 }
 
